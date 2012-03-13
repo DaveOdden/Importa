@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><!-- $page_name--></title>
   <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=0.9">
   <link rel="stylesheet" href="css/style.css">
 
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->

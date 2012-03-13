@@ -1,5 +1,5 @@
-<?php include_once ("../../common/app_header.php"); ?>
 <?php include_once ("app_functions.php"); ?>
+<?php include_once ("../../common/app_header.php"); ?>
 <?php
 session_start();
 //if a session is active, proceed to 
@@ -17,27 +17,29 @@ if (!isset($_SESSION['SESS_USERNAME']))
 //if the submit button has been clicked
 if (isset($_POST['submit_entry']))
 {
-	
 	$username = $_SESSION['SESS_USERNAME'];
-		
+	{
 	//insert form fields into Journal table for active user
 	mysql_query("INSERT INTO Journal (usersname, entry_title, entry_content, entry_timestamp)
 				VALUES ('".$username."', '".$_POST['entry_title']."', '".$_POST['entry_content']."', '".date("F j, Y, g:i a")."')");
-	
-	
+	}
 	?>
 	    <script type="text/javascript">
 		<!--
-		window.location = "Journal.php?test"
+		window.location = "Journal.php?success"
 		//-->
 		</script>
     <?php
-	
-}
-
+	}
 ?>
 <?php require ("../../common/app_nav.php"); ?>
 		<h3>Journal</h3>
+		<?php
+		if (isset($_REQUEST["success"]))
+		{
+			successMsg('Congrats! Your entry has been stored.');
+		}
+		?>
 		<button id="opener" class="button_style blue_btn" onClick="javascript:newEntry()">Write New Entry</button>
 		<hr id="hr_adj"/>
 		<div id="dialog-overlay"></div>
@@ -57,22 +59,7 @@ if (isset($_POST['submit_entry']))
 		    </div>
 		</div>		
 		<div id="journal_entry_container">
-			<?php
-			$nameResult = mysql_query("SELECT * FROM Journal WHERE usersname = '$username' ORDER BY entryID DESC");
-
-			while($info = mysql_fetch_array( $nameResult )) 
-			{
-			?>
-			<ul class"entry">
-				<li class="entryList">
-			 		<h3 class="entry_title"><?php echo $info['entry_title']; ?></h3>
-					<p class="entry_timestamp"><?php echo $info['entry_timestamp']; ?></p>
-					<p class="entry_content"><?php echo $info['entry_content']; ?></p>
-				</li>
-			</ul>
-			<?php
-			}
-			?>
+			<?php displayJournalEntries(); ?>
 		</div>
 		<script type="text/javascript">
 		$(document).ready(function () {
@@ -99,7 +86,7 @@ if (isset($_POST['submit_entry']))
 		    var maskWidth = $(window).width();
 
 		    // calculate the values for center alignment
-		    var dialogTop =  (maskHeight/2) - ($('#dialog-box').height());  
+		    var dialogTop =  '12%';//(maskHeight/2) - ($('#dialog-box').height());  
 		    var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
 
 		    // assign values to the overlay and dialog box

@@ -45,7 +45,7 @@ if (isset($_REQUEST["success"]))
 }
 if (isset($_REQUEST["failed"]))
 {
-	errorMsg('You fucked up!');
+	errorMsg('You need to upload a ZIP file!');
 }
 ?>
 <h3>Available Apps (<?php echo $num_rows-2; ?>)</h3>

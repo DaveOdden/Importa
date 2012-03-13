@@ -1,37 +1,9 @@
-@-webkit-keyframes reset {
-	0% {
-	    opacity: 0;
-	}
-	100% {
-	    opacity: 0;
-	}
-}
- 
-@-webkit-keyframes fade-in {
-	0% {
-	    opacity: 0;
-	}
-	15% {
-	    opacity: 0;
-	}
-	100% {
-	    opacity: 1;
-	}
-}
-
 form#journal_form {padding:0; margin:25px; max-width: 415px; height: 245px;}
 .subject_line {height: 30px;}
 .text_box { color: #7d7d7d; border: 1px solid #d5d5d2; -moz-border-radius: 4px; border-radius: 4px; width: 360px; font-size: 18px;}
 #journal_form_container {padding: 0px; margin: 0px; min-width: 425px;}
 #journal_entry_container p h3 {float: left; margin: 10px 25px; padding: 25px;}
 .entry  {padding: 40px;margin:0px;}
-.entryList {
-	-webkit-animation-name: reset, fade-in;
-	    -webkit-animation-duration: 1s;
-	    -webkit-animation-timing-function: ease-in;
-	    -webkit-animation-iteration-count: 1;
-		-webkit-animation-delay: 0, 0;
-}
 .entry_title {padding:0px;margin:0px;line-height: 1em;margin-left: 20px;}
 .entry_timestamp {font-family: CabinItalic, sans-serif; font-size: .8em; padding:0px;margin:0px; margin-left: 20px; color: #7b7b7b;}
 .entry_content {padding:0px;margin:10px 0px 20px 20px; margin-right: 10%; color:#5b5b52;}

@@ -1,9 +1,10 @@
 <?php include_once ("../../common/app_header.php"); ?>
+<?php include_once ("../../common/app_nav.php"); ?>
 <div id="fb-root"></div>
       <script>
         window.fbAsyncInit = function() {
           FB.init({
-            appId      : '191984330902',
+            appId      : 408258892523767,
             status     : true, 
             cookie     : true,
             xfbml      : true,
