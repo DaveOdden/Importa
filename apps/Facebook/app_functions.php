@@ -11,4 +11,6 @@ function createAppTable()
 	PRIMARY KEY (ID))")
 		or die(mysql_error());
 }
+
+echo 'pop up sluts';
 ?>

@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><!-- $page_name--></title>
+  <title><?php $info = pathinfo($_SERVER['PHP_SELF']); echo basename($_SERVER['PHP_SELF'],'.'.$info['extension']); ?></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=0.9">
   <link rel="stylesheet" href="css/style.css">
@@ -19,7 +19,6 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/libs/jquery-ui-1.8.18.custom.min.js"><\/script>')</script>
  <script src="js/libs/jquery.ui.touch-punch.min.js"></script>
-
  <script src="js/libs/modernizr-2.5.3.min.js"></script>
 </head>
 <body>
@@ -41,8 +40,8 @@ dbCheck();
 				{
 				?>
 				<li><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-				<li><a href="user_registration.php">Sign Up</a></li>
-				<li><a href="common/logout.php" >Log-In</a></li>
+				<li><a href="#login_form">Sign Up</a></li>
+				<li><a href="#login_form" >Log-In</a></li>
 				<?php
 				}
 				else if (isset($_SESSION['SESS_USERNAME']))

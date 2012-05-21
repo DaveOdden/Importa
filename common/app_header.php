@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><!-- $page_name--></title>
+  <title><?php $info = pathinfo($_SERVER['PHP_SELF']); echo basename($_SERVER['PHP_SELF'],'.'.$info['extension']); ?></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="../../css/style.css">
@@ -21,6 +21,7 @@
 <script>window.jQuery || document.write('<script src="../../js/libs/jquery-ui-1.8.18.custom.min.js"><\/script>')</script>
 
   <!-- <script src="js/libs/modernizr-2.5.3.min.js"></script> -->
+<script src="../../js/libs/jedit.js"></script>
 </head>
 <body>
 	

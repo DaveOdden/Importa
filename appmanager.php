@@ -13,6 +13,17 @@ if (!isset($_SESSION['SESS_USERNAME']))
 }
 ?>
 <?php include_once "common/header.php"; ?>
+<!-- Page Heading -->
+<?php
+if (isset($_REQUEST["success"]))
+{
+	successMsg('Your application has been uploaded!');
+}
+if (isset($_REQUEST["failed"]))
+{
+	errorMsg('Upload a zip!');
+}
+?>
 <!-- jQuery Sortable-->
 <script type="text/javascript">
 $(document).ready(function() { 
@@ -37,17 +48,6 @@ $(document).ready(function() {
 	$tables = mysql_list_tables( $dbname );
 	$num_rows = mysql_num_rows($tables);
 ?>
-<!-- Page Heading -->
-<?php
-if (isset($_REQUEST["success"]))
-{
-	successMsg('Your application has been uploaded!');
-}
-if (isset($_REQUEST["failed"]))
-{
-	errorMsg('You need to upload a ZIP file!');
-}
-?>
 <h3>Available Apps (<?php echo $num_rows-2; ?>)</h3>
 <hr/>
 <div id="available_app_container">
@@ -64,16 +64,19 @@ if (isset($_REQUEST["failed"]))
 	{
 		if ("UserAccounts" != $app[0] && "UserSessions" != $app[0])
 		{
-			echo '<h3>'.$app[0].'</h3>';
+			echo '<div class="avail_app_wrapper">';
+			echo '<div class="placeholder"></div>';
+			echo '<h3>'.$app[0].'</h3><p class="app_desc">Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit.</p>';
 			if(!array_diff($app, $explodedArray))
 			{
-			echo '<a href="appmanager.php?action=deactivate&app='.$app[0].'" class="activate_app_text">deactivate app</a>';
+			echo '<a href="appmanager.php?action=deactivate&app='.$app[0].'" class="deactivate_app_text">deactivate app</a>';
 			}
 			else if(array_diff($app, $explodedArray))
 			{
 			echo '<a href="appmanager.php?app='.$app[0].'" class="activate_app_text">activate app</a>';
 			}
-		echo '<hr class="app_hr"/>'; 
+			echo '</div>';
+		//echo '<hr class="app_hr"/>'; 
 		$count++;
 		}
 	}

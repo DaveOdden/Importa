@@ -20,7 +20,7 @@
 				{
 					if(0 == count($explodedArray))
 					{
-						echo '<p>Go to the App Manager page to activate applications</p>';
+						echo '<br/><br/><br/>	<p>Go to the App Manager page to activate applications</p>';
 					}
 					if($_SERVER["PHP_SELF"] == '/webapp/appmanager.php')
 					{
