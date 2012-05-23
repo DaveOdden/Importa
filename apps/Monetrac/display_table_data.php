@@ -1,20 +1,23 @@
 <table border="1" id="table">
-	<tr>
-	<th> </th>
-	<th>Jan.</th>
-	<th>Feb.</th>
-	<th>March</th>
-	<th>April</th>
-	<th>May</th>
-	<th>June</th>
-	<th>July</th>
-	<th>Aug.</th>
-	<th>Sept.</th>
-	<th>Oct.</th>
-	<th>Nov.</th>
-	<th>Dec.</th>
-	</tr>
 <tbody id="t_1">
+	<tr>
+		<th> </th>
+		<th>Jan.</th>
+		<th>Feb.</th>
+		<th>March</th>
+		<th>April</th>
+		<th>May</th>
+		<th>June</th>
+		<th>July</th>
+		<th>Aug.</th>
+		<th>Sept.</th>
+		<th>Oct.</th>
+		<th>Nov.</th>
+		<th>Dec.</th>
+	</tr>
+</tbody>
+
+<tbody id="t_2">
 
 <?php
 $con = mysql_connect('localhost', 'root', 'root');
@@ -129,12 +132,10 @@ $user_data = mysql_query("SELECT * FROM Monetrac WHERE username = '$username'");
 		$cat_count = $cat_count -  1;
 		echo '</tr>';
 }
+include_once ("refresh_totals.php");
+
 ?>
 
-</tbody>
-<span id="tb_con">
-<?php include_once ("refresh_totals.php"); ?>
-</span>
 </table>
 
 <script type="text/javascript">
@@ -148,10 +149,15 @@ $(document).ready(function () {
 		 cssclass : 'someclass',
 		 onblur : 'cancel', 
 		 callback: function(value, settings) {
-		$("#totals2").remove();
-		$("#t_1").after($("<tbody id='totals2'>").load("refresh_totals.php"));	
-		//$("#table2").html($("#table2").load('refresh_totals.php')); 
-		   	   }
+			if ($(this).hasClass('cell')) {
+				$('#data_table').remove();
+				$('#t_1').remove();
+				$('#t_2').remove();
+				$('#t_3').remove();
+				$('#year').after($("<span id='data_table'>").load("display_table_data.php"));
+				//$("#table2").html($("#table2").load('refresh_totals.php')); 
+				}
+	   	   }
      });
 });
 </script>

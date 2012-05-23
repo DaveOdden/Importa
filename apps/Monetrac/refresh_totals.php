@@ -74,7 +74,7 @@ $user_data = mysql_query("SELECT * FROM Monetrac WHERE username = '$username'");
 			$nov_total += $exploded_array_nov[$x];
 			$dec_total += $exploded_array_dec[$x];
 		}
-
+		echo '<tbody id="t_3">';
 		echo '<tr id="totals2">';
 		echo '<td style="background-color: #d7ecd7;">TOTALS:</td>';
 		echo '<td class="cell" style="background-color: #eaf1ea">'. number_format($jan_total, 2, '.', ',') .'</td>';
@@ -90,6 +90,7 @@ $user_data = mysql_query("SELECT * FROM Monetrac WHERE username = '$username'");
 		echo '<td class="cell" style="background-color: #eaf1ea">'. number_format($nov_total, 2, '.', ',') .'</td>';
 		echo '<td class="cell" style="background-color: #eaf1ea">'. number_format($dec_total, 2, '.', ',') .'</td>';
 		echo '</tr>';
+		echo '</tbody>';
 		
 	}
 

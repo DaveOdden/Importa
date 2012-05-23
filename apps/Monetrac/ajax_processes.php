@@ -1,5 +1,4 @@
 <?php
-include_once ("display_table_data.php");
 
 $con = mysql_connect('localhost', 'root', 'root');
 

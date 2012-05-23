@@ -33,10 +33,7 @@ if (!isset($_SESSION['SESS_USERNAME']))
 		<a id="done_btn" class="button" onClick="$(this).hide(); $('#edit_btn').show();">Done Editing</a>
 		</span>
 		<h1 id="year">2012</h1>
-		
-		<div id="table_container">
-				<?php include_once ("display_table_data.php"); ?>	
-		</div>	
+			<?php include_once ("display_table_data.php"); ?>
 		
 		<script type="text/javascript">
 		$(document).ready(function () {
@@ -88,21 +85,15 @@ if (!isset($_SESSION['SESS_USERNAME']))
 									//$('#totals').load('display_table_data.php');
 							        }
 							}); 
-							return false;
-							
-							//$.post("store_row_order.php", { 'cat_list': data },function (o) {
-							//	alert('hi');
-							//},'json' );                  
+							return false;                 
 				        }  
 				    }).disableSelection();
 				});
 			});
 			
 		$("#done_btn").click(function() {
-			//$(this).addClass('edit');
 				$('.sortable').disableSelection();
 				$('#table').removeClass('sortable');
-				//$('.handle').slideToggle();
 				$('.handle').remove();
 				$('.delete').remove();
 			});
@@ -117,8 +108,12 @@ if (!isset($_SESSION['SESS_USERNAME']))
 			  data: { 'add_cat': dataString },
 			  cache: false,
 			  success: function()
-			        {
-						$('#t_1').load('display_table_data.php');
+			        {	
+						$('#data_table').remove();
+						$('#t_1').remove();
+						$('#t_2').remove();
+						$('#t_3').remove();
+						$('#year').after($("<span id='data_table'>").load("display_table_data.php"));
 			        }
 			});  
 			return false;
@@ -136,6 +131,11 @@ if (!isset($_SESSION['SESS_USERNAME']))
 						$('#confirm').hide();
 						$('#dialog-overlay').hide();
 						$('#done_btn').hide(); $('#edit_btn').show();
+						$('#data_table').remove();
+						$('#t_1').remove();
+						$('#t_2').remove();
+						$('#t_3').remove();
+						$('#year').after($("<span id='data_table'>").load("display_table_data.php"));
 						//$('#t_1').load('display_table_data.php');
 			        }
 			}); 

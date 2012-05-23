@@ -13,11 +13,14 @@ input:focus {border: none; outline: none; margin:0px; padding: 0px;float:left;}
 
 .category {
 	background-color: #b8d6f2;
-	min-width: 160px; cursor:hand;
-	cursor:grab;
-	cursor:-moz-grab;
-	cursor:-webkit-grab;
+	min-width: 160px;
 }
+
+.hand_class {
+cursor:hand;
+cursor:grab;
+cursor:-moz-grab;
+cursor:-webkit-grab;}
 
 img
 {
