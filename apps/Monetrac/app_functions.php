@@ -24,9 +24,4 @@ function createAppTable()
 		or die(mysql_error());
 }
 
-//echo $stringData = $_GET['add_cat']; 
-
-//if the user clicks "Add Category" execute the following code
-
-
 ?>

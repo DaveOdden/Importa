@@ -21,6 +21,7 @@ if (!isset($_SESSION['SESS_USERNAME']))
 		<h3>Monetrac</h3>
 		<hr id="hr_adj"/>
 		<div id="confirm" style="display:none;">
+		<div id="confirm_header">Hey Wait!</div>
 		 <div class="message">Are you sure you want to delete this category and all of its content?</div><br/>
 		    <div class="buttons">
 		        <span class="cancel button">No</span><span class="accept button">Yes</span>
@@ -32,41 +33,11 @@ if (!isset($_SESSION['SESS_USERNAME']))
 		<a id="done_btn" class="button" onClick="$(this).hide(); $('#edit_btn').show();">Done Editing</a>
 		</span>
 		<h1 id="year">2012</h1>
-			<table border="1" id="table">
-				<tr>
-				<th> </th>
-				<th>Jan.</th>
-				<th>Feb.</th>
-				<th>March</th>
-				<th>April</th>
-				<th>May</th>
-				<th>June</th>
-				<th>July</th>
-				<th>Aug.</th>
-				<th>Sept.</th>
-				<th>Oct.</th>
-				<th>Nov.</th>
-				<th>Dec.</th>
-				</tr>
-			<tbody id="t_1">
+		
+		<div id="table_container">
 				<?php include_once ("display_table_data.php"); ?>	
-			</tbody>
-			<tr>
-				<td style="background-color: #d7ecd7;">TOTALS:</td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($jan_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($feb_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($march_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($april_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($may_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($june_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($july_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($aug_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($sept_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($oct_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($nov_total, 2, '.', ','); ?></td>
-				<td class="cell" style="background-color: #eaf1ea"><?php echo number_format($dec_total, 2, '.', ','); ?></td>
-			</tr>
-			</table>
+		</div>	
+		
 		<script type="text/javascript">
 		$(document).ready(function () {
 			
@@ -106,8 +77,22 @@ if (!isset($_SESSION['SESS_USERNAME']))
 				        },  
 				        scroll: true,  
 				        stop: function (event, ui) {
-							  
-				            //SAVE SORT ORDER                      
+				            var data = $('.sortable').sortable('serialize');
+							//alert('here');
+							$.ajax({  
+							  type: "POST",  
+							  url: "store_row_order.php",  
+							  data: { 'cat' : data },
+							  success: function()
+							        {
+									//$('#totals').load('display_table_data.php');
+							        }
+							}); 
+							return false;
+							
+							//$.post("store_row_order.php", { 'cat_list': data },function (o) {
+							//	alert('hi');
+							//},'json' );                  
 				        }  
 				    }).disableSelection();
 				});
@@ -151,10 +136,15 @@ if (!isset($_SESSION['SESS_USERNAME']))
 						$('#confirm').hide();
 						$('#dialog-overlay').hide();
 						$('#done_btn').hide(); $('#edit_btn').show();
-						$('#t_1').load('display_table_data.php');
+						//$('#t_1').load('display_table_data.php');
 			        }
 			}); 
 			return false;
+		});
+		
+		$(".cancel").click(function() {
+			$('#confirm').css('display','none');
+			$('#dialog-overlay').css('display','none');
 		});
 	});
 </script>

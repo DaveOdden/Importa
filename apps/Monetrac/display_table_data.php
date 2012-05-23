@@ -1,3 +1,21 @@
+<table border="1" id="table">
+	<tr>
+	<th> </th>
+	<th>Jan.</th>
+	<th>Feb.</th>
+	<th>March</th>
+	<th>April</th>
+	<th>May</th>
+	<th>June</th>
+	<th>July</th>
+	<th>Aug.</th>
+	<th>Sept.</th>
+	<th>Oct.</th>
+	<th>Nov.</th>
+	<th>Dec.</th>
+	</tr>
+<tbody id="t_1">
+
 <?php
 $con = mysql_connect('localhost', 'root', 'root');
 
@@ -11,7 +29,7 @@ session_start();
 $username = $_SESSION['SESS_USERNAME'];
 
 $user_data = mysql_query("SELECT * FROM Monetrac WHERE username = '$username'");
-
+	
 	if($info = mysql_fetch_array( $user_data )) 
 	{
 		//Categories
@@ -58,23 +76,8 @@ $user_data = mysql_query("SELECT * FROM Monetrac WHERE username = '$username'");
 		$exploded_array_dec = explode('-',$user_data_dec_string );
 	
 		$cat_count = count($exploded_array_jan);
-		for($x=0;$x<$cat_count;$x++)
-		{
-			//REFACTOR
-			$jan_total += $exploded_array_jan[$x];
-			$feb_total += $exploded_array_feb[$x];
-			$march_total += $exploded_array_march[$x];
-			$april_total += $exploded_array_april[$x];
-			$may_total += $exploded_array_may[$x];
-			$june_total += $exploded_array_june[$x];
-			$july_total += $exploded_array_july[$x];
-			$aug_total += $exploded_array_aug[$x];
-			$sept_total += $exploded_array_sept[$x];
-			$oct_total += $exploded_array_oct[$x];
-			$nov_total += $exploded_array_nov[$x];
-			$dec_total += $exploded_array_dec[$x];
-		}
 	}
+	
 	//array of months
 	$month_array = array("jan","feb","march","april", "may", "june", "july", "aug", "sept", "oct", "nov", "dec");
 	$_SESSION['month_array'] = $month_array;
@@ -127,6 +130,13 @@ $user_data = mysql_query("SELECT * FROM Monetrac WHERE username = '$username'");
 		echo '</tr>';
 }
 ?>
+
+</tbody>
+<span id="tb_con">
+<?php include_once ("refresh_totals.php"); ?>
+</span>
+</table>
+
 <script type="text/javascript">
 $(document).ready(function () {
 
@@ -135,7 +145,13 @@ $(document).ready(function () {
          tooltip  : 'Click to edit',
 		 name     : 'value',
 		 id 	  : 'id',
-		 cssclass : 'someclass'
+		 cssclass : 'someclass',
+		 onblur : 'cancel', 
+		 callback: function(value, settings) {
+		$("#totals2").remove();
+		$("#t_1").after($("<tbody id='totals2'>").load("refresh_totals.php"));	
+		//$("#table2").html($("#table2").load('refresh_totals.php')); 
+		   	   }
      });
 });
 </script>

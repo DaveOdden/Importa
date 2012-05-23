@@ -3,12 +3,13 @@
 #done_btn {visibility: hidden;}
 a { text-decoration: none; 	cursor:pointer ;cursor:hand ;}
 p {margin: 0px;padding: 0px}
-table {margin: 10px 50px 10px 50px; }
+table {margin: 10px 50px 10px 50px; white-space:nowrap;}
 td {padding: 8px;}
 th {padding: 10px 17px; background-color: #373737; color: #efefef;}
-.someclass { padding: 0px; margin: 0px; }
+.someclass { border: none; outline: none; margin:0px; padding: 0px;float:left; }
 .cell input { max-width:35px; float:left;}
 input:focus {border: none; outline: none; margin:0px; padding: 0px;float:left;}
+.blur {border: none; outline: none; margin:0px; padding: 0px;float:left;}
 
 .category {
 	background-color: #b8d6f2;
@@ -113,14 +114,27 @@ padding: 0px; margin: 0px;
         top: 1px;
 }
 
-.message {margin:0 auto;padding:25px 30px 0px 30px;}
+.message {
+	margin:0 auto;
+	padding:25px 30px 0px 30px;
+	}
+#confirm_header {
+	border-radius: .2em;
+	text-shadow: 0.08em 0.08em 0.08em #e8e8e8;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#ee7d29));
+    background-image: -webkit-linear-gradient(top, #ff903b, #ee7d29);
+    background-image: -moz-linear-gradient(top, #ffb953, #ff903b);
+    background-image: -ms-linear-gradient(top, #ffb953, #ff903b);
+    background-image: -o-linear-gradient(top, #ffb953, #ff903b);
+    background-image: linear-gradient(top, #ffb953, #ff903b);
+	height: 24px; width: inherit; color: #4a3423; font-weight: 900; text-align: left;padding:10px;
+	}
 #confirm {
 	font-size: 1.1em;
 	text-align:center;
 	background-color: #dedede;
 	position:absolute;
 	margin: 0px;
-	padding:10px;
 	margin-left: 17%;
 	border-radius: .2em;
     -moz-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
@@ -141,4 +155,17 @@ padding: 0px; margin: 0px;
     top:0; left:0; 
     z-index:3000; 
 	display:none;
+}
+
+@media screen and (max-width: 1345px) {
+	
+	.cell { }
+	th {padding: 8px;}
+	td {padding: 6px;}
+
+}
+
+@media screen and (max-width: 1245px) {
+	
+	td {font-size: 13px; padding: 8px;}
 }
