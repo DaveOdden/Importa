@@ -33,27 +33,55 @@ dbCheck();
   <header id="top_bar">
 			<h1>Importa</h1>
 		<div id="nav">
-			<ul>
 				<?php
 				//if a session is active, proceed to 
 				if (!isset($_SESSION['SESS_USERNAME']))
 				{
 				?>
-				<li><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
-				<li><a href="#login_form">Sign Up</a></li>
-				<li><a href="#login_form" >Log-In</a></li>
+				<ul>											<li><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+				<li><a id="login_btn" href="#">Log-In</a></li>
+				<li id="signup_li"><a id="signup_btn" href="#">Sign Up</a></li>
+				</ul>
+				
+				<div id="login_container">
+					<span id="unicode_char">&#9650;</span>
+					<div id="modal_bg">
+						<div id="modal_content">
+							<form action="login.php?loginAttempt=true#login_form" method="POST">
+								<div>Username</div><input type="text" name="username" class="input"/><br />
+								<div>Password</div><input type="password" name="password" class="input"/><br />
+								<input type="submit" name="submit" value="Login" id="submit_btn"/>
+							</form>
+						</div>
+					</div>
+				</div>
+				
+				<div id="signup_container">
+					<span id="unicode_char_2">&#9650;</span>
+					<div id="modal_bg">
+						<div id="modal_content">
+							<form action="login.php#login_form" method="POST">
+								Choose Username&nbsp;<input type=text name="username" class="input"><br/><br/>
+								Choose Password&nbsp;&nbsp;&nbsp;<input type=password name="pass" class="input"><br/><br/>
+								Verify Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=password name="pass2" class="input"><br/><br/>
+								<input type=submit name="new_user_submit" value="Create Account" id="register_btn">
+							</form>
+						</div>
+					</div>
+				</div>
 				<?php
 				}
 				else if (isset($_SESSION['SESS_USERNAME']))
 				{
 				?>
+				<ul>
 				<li><a href="appmanager.php">App Manager</a></li>
 				<li><a href="settings.php">Settings</a></li>
 				<li><a href="common/logout.php" >Log-Out</a></li>
+				<ul>
 				<?php
 				}
 				?>
-			</ul>
 		</div>
   </header>
 <noscript>This site just doesn't work, period, without JavaScript</noscript>

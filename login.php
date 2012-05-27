@@ -1,27 +1,80 @@
 <?php require "common/header.php"; ?>
 <div id="main_wrapper" role="main wrapper">
-	<div id="main" role="main content" style="margin-left: -260px;">
+	<div id="main" role="main content">
 		<br/>
-		<br/>	
-		<div id="login_form" class="float_left">
-		<h3>Login</h3>
-			<form action="login.php?loginAttempt=true#login_form" method="POST">
-				Username&nbsp;<input type=text name=username><br/><br/>
-				Password&nbsp;&nbsp;<input type=password name=password><br/><br/>
-				<input type=submit name=submit value="Log In" class="float_right">
-			</form>
+		<br/>
+		<div id="home_sections" style="margin-left:-260px">
+			<div id="section_1">
+				<div id="intro">
+					<h2 id="intro_header">A Web-based Business &amp; Consumer Productivity Suite</h2>
+					<h3 id="intro_body">Cum sociis natoque penttes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. Curabitur blandit .<br/>
+					<br/>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctorsed posuer</h3>
+					<div id="btn_container">
+						<div class="btn_house" id="house1"><a href="#" id="join_btn">Join <span id="italic_for">for</span> Free</a></div>
+						<div class="btn_house" id="house2"><a id="tour_btn">Take a Tour</a></div>
+					</div>
+				  </div>
+				  <div id="img_placeholder">
+				  </div>
+			  </div>
+			
+			<div id="section_2">
+				<div id="s2_options">
+					<ul id="home_options">
+						<li><a href="#">Activate Tools</a></li>
+						<li><a href="#">Upload a Tool</a></li>
+						<li><a href="#">Build a Tool</a></li>
+						<li><a href="#">Smart Tools</a></li>
+						<li><a href="#">Take a Tour</a></li>
+					</ul>
+				</div>
+				<div id="option_display">
+					<!-- ><span id="unicode_char_3">&#9664;</span>
+					<div class="arrow-left"></div> -->
+					<div id="option_line"></div>
+					<div id="option_info">
+						<div id="img_placeholder_2"></div>
+						<div id="option_info_text">
+							<h3>Morbi leo risus, porta ac conse setetur
+							accvest ibusorus fotrys</h3>
+							<p>Vestibulum id ligula porta felis euismod semper. Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem.</p>
+							<ul>
+								<li>- Duis mollis, est non commodo<li>
+								<li>- Erat porttitor ligula, eget lacinia odio sem <li>
+								<li>- Felis euismod semper. Donec sed odio dui. Duis<li>
+								<li>- Erat porttitor ligula, eget lacinia odio sem<li>
+							</ul>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div id="new_user_form" class="float_left">
-			<h3>Create an Account</h3>
-			<form action="login.php#login_form" method="POST">
-				Choose Username&nbsp;<input type=text name="username"><br/><br/>
-				Choose Password&nbsp;&nbsp;&nbsp;<input type=password name="pass"><br/><br/>
-				Verify Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=password name="pass2"><br/><br/>
-				<input type=submit name="new_user_submit" value="Create Profile" class="float_right">
-			</form>
-			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			
+			<div id="section_3">
+				<h3>Five-star, Customizable Tools that Adapt to your Needs</h3>
+			
+				<div id="mrkt_icon_1">
+					<img src="img/home_icon1.png">
+					<p>Powerful Analytics</p>
+				</div>
+				<div id="mrkt_icon_2">
+					<img src="img/home_icon2.png">
+					<p>Secure Cloud Services</p>
+				</div>
+				<div id="mrkt_icon_3">
+					<img src="img/home_icon3.png">
+					<p>Advanced Social Tools</p>
+				</div>
+				<div id="mrkt_icon_4">
+					<img src="img/home_icon4.png">
+					<p>Standard Support</p>
+				</div>
 			</div>
-			<div id="section"></div>
+			
+			<div id="login_footer">
+				<p>Terms of Service | Privacy Policy | © 2012 My Parent Company Name LLC</p>
+				<p>Login | Signup</p>
+			</div>
+			</div>
 			<?php
 
 			if('http://localhost:8888/webapp/login.php' != $_SERVER['HTTP_REFERER'] && 'http://localhost:8888/webapp/common/logout.php' != $_SERVER['HTTP_REFERER'])

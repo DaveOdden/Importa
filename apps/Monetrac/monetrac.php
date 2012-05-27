@@ -40,15 +40,17 @@ if (!isset($_SESSION['SESS_USERNAME']))
 			
 		$("#edit_btn").click(function() {
 			//$(this).removeClass('edit');
+				$(".sortable #t_2").sortable( "enable" );
 				$('#table').addClass('sortable');
+				$('.category').addClass('hand_class');
 				$('<img src="../../img/icons/reorder.png" alt="move" width="20" height="20" class="handle" />').appendTo('.category');
 				$('.handle').hide().animate({ width: 'show' });
 				$('<a class="delete" onClick="window.value1 = this.parentNode.id; $(\'#confirm\').css(\'display\',\'block\'); $(\'#dialog-overlay\').css(\'display\',\'block\');" title="Delete Row">x</a>').appendTo('.category');
 				
-				$(".sortable tbody").each(
+				$(".sortable #t_2").each(
 			    function(e) {
 					//make table rows sortable  
-				    $('.sortable tbody').sortable({  
+				    $('.sortable #t_2').sortable({  
 				        start: function (event, ui) {  
 				            //fix firefox position issue when dragging.  
 				            if (navigator.userAgent.toLowerCase().match(/firefox/) && ui.helper !== undefined) {  
@@ -87,13 +89,15 @@ if (!isset($_SESSION['SESS_USERNAME']))
 							}); 
 							return false;                 
 				        }  
-				    }).disableSelection();
+				    })
 				});
 			});
 			
 		$("#done_btn").click(function() {
-				$('.sortable').disableSelection();
+				//$('.sortable #t_2').disableSelection();
+				$(".sortable #t_2").sortable( "disable" );
 				$('#table').removeClass('sortable');
+				$('.category').removeClass('hand_class');
 				$('.handle').remove();
 				$('.delete').remove();
 			});
