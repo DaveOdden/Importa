@@ -22,14 +22,11 @@ cursor:grab;
 cursor:-moz-grab;
 cursor:-webkit-grab;}
 
-img
-{
-opacity: .5;
-margin-right: 8px;
-}
 .handle
 {
 float: left;
+opacity: .5;
+margin-right: 8px;
 }
 .smaller_dollar_sign 
 {
@@ -46,6 +43,7 @@ padding: 0px; margin: 0px;
 	border-radius: 190px;
 	font-weight: bold;
 	background-color: #a75555;
+	font-size: 14px;
 	content:'x';
 }
 .delete

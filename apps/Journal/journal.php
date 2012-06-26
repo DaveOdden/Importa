@@ -33,7 +33,7 @@ if (isset($_POST['submit_entry']))
 	}
 ?>
 <?php require ("../../common/app_nav.php"); ?>
-		<h3>Journal</h3>
+		<h3 id="app_name">Journal</h3>
 		<?php
 		if (isset($_REQUEST["success"]))
 		{
@@ -61,6 +61,10 @@ if (isset($_POST['submit_entry']))
 		<div id="journal_entry_container">
 			<?php displayJournalEntries(); ?>
 		</div>
+		<div id="post_sidebar">
+			<h3 id="archive_titles">Entry Archive</h3>
+			<?php displaySidebar(); ?>
+		</div>
 		<script type="text/javascript">
 		$(document).ready(function () {
 
@@ -86,12 +90,12 @@ if (isset($_POST['submit_entry']))
 		    var maskWidth = $(window).width();
 
 		    // calculate the values for center alignment
-		    var dialogTop =  '12%';//(maskHeight/2) - ($('#dialog-box').height());  
+		    var dialogTop =  '-20px';//(maskHeight/2) - ($('#dialog-box').height());  
 		    var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
 
 		    // assign values to the overlay and dialog box
-		    $('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show().animate({opacity: 0.5},00 );
-		    $('#dialog-box').css({top:dialogTop, left:dialogLeft}).show().animate({opacity: 1}, 100 );
+		    $('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show().animate({opacity: 0.5}, 100 );
+		    $('#dialog-box').css({top:dialogTop, left:dialogLeft}).show().animate({opacity: 1}, 200 );
 
 		    // display the message
 		    $('#dialog-message').html(message);

@@ -1,6 +1,5 @@
 <?php include_once ("app_functions.php"); ?>
 <?php include_once ("../../common/app_header.php"); ?>
-
 <?php
 session_start();
 //if a session is active, proceed to 
@@ -29,7 +28,7 @@ if (!isset($_SESSION['SESS_USERNAME']))
 		</div>
 		<span id="controls">
 		<a class="button" id="add_cat_btn">Add Category</a>
-		<a id="edit_btn" class="button" onClick="$(this).hide(); $('#done_btn').css('visibility','visible'); $('#done_btn').show();">Edit Table</a>
+		<a id="edit_btn" class="button" onClick="$(this).hide(); $('#done_btn').css('visibility','visible'); $('#done_btn').show();">Sort & Delete Items</a>
 		<a id="done_btn" class="button" onClick="$(this).hide(); $('#edit_btn').show();">Done Editing</a>
 		</span>
 		<h1 id="year">2012</h1>
@@ -37,6 +36,7 @@ if (!isset($_SESSION['SESS_USERNAME']))
 		
 		<script type="text/javascript">
 		$(document).ready(function () {
+			
 			
 		$("#edit_btn").click(function() {
 			//$(this).removeClass('edit');
@@ -52,6 +52,7 @@ if (!isset($_SESSION['SESS_USERNAME']))
 					//make table rows sortable  
 				    $('.sortable #t_2').sortable({  
 				        start: function (event, ui) {  
+							//var rowsInitialPosition = ui.item.index();
 				            //fix firefox position issue when dragging.  
 				            if (navigator.userAgent.toLowerCase().match(/firefox/) && ui.helper !== undefined) {  
 				                ui.helper.css('position', 'absolute').css('margin-top', $(window).scrollTop());  
@@ -77,14 +78,17 @@ if (!isset($_SESSION['SESS_USERNAME']))
 				        scroll: true,  
 				        stop: function (event, ui) {
 				            var data = $('.sortable').sortable('serialize');
-							//alert('here');
+							
+							alert("New position: " + ui.item.index());
+							//alert(data);
+							
 							$.ajax({  
 							  type: "POST",  
-							  url: "store_row_order.php",  
+							  url: "store_row_order.php", 
 							  data: { 'cat' : data },
-							  success: function()
+						 	  success: function(event, ui)
 							        {
-									//$('#totals').load('display_table_data.php');
+								//alert('done');
 							        }
 							}); 
 							return false;                 

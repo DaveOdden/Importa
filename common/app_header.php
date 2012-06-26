@@ -33,20 +33,62 @@ dbCheck();
 
 <div id="wrapper">
   <header id="top_bar">
-			<h1>Importa</h1>
+	<div id="menu" class="mobile_btn">Menu</div>
+	<h1><a href="http://localhost:8888/webapp/login.php" title="Importa - Home" class="logo">Importa</a></h1>
+	<div id="dropdown_menu_btn" class="mobile_btn">Opt.</div>
+	
+	<div id="dropdown_options">
 		<div id="nav">
-			<!-- IF LOGGED OUT -->
-
-
-			          <!-- Alternate content here -->
-			
-			
-			<!-- IF LOGGED IN -->
-			<ul>
-				<li><a href="../../appmanager.php">App Manager</a></li>
-				<li><a href="../../settings.php">Settings</a></li>
-				<li><a href="../../common/logout.php" >Log-Out</a></li>
+			<?php
+			//if a session is active, proceed to 
+			if (!isset($_SESSION['SESS_USERNAME']))
+			{
+			?>
+			<ul>											<li><a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li><a id="login_btn" href="#">Log-In</a></li>
+			<li id="signup_li"><a id="signup_btn" href="#">Sign Up</a></li>
 			</ul>
-		</div>
-  </header>
+			
+			<div id="login_container">
+				<span id="unicode_char">&#9650;</span>
+				<div id="modal_bg">
+					<div id="modal_content">
+						<form action="login.php?loginAttempt=true" method="POST">
+							<div>Username</div><input type="text" name="username" class="input"/><br />
+							<div>Password</div><input type="password" name="password" class="input"/><br />
+							<input type="submit" name="submit" value="Login" id="submit_btn"/>
+						</form>
+					</div> <!-- modal content -->
+				</div> <!-- modal bg -->
+			</div> <!-- login container -->
+		</div> <!-- nav -->
+			
+			<div id="signup_container">
+				<span id="unicode_char_2">&#9650;</span>
+				<div id="modal_bg">
+					<div id="modal_content">
+						<form action="login.php#login_form" method="POST">
+							Choose Username&nbsp;<input type=text name="username" class="input"><br/><br/>
+							Choose Password&nbsp;&nbsp;&nbsp;<input type=password name="pass" class="input"><br/><br/>
+							Verify Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=password name="pass2" class="input"><br/><br/>
+							<input type=submit name="new_user_submit" value="Create Account" id="register_btn">
+						</form> 
+					</div> <!-- modal content -->
+				</div> <!-- modal bg -->
+			</div> <!-- signup container -->
+			<?php
+			}
+			else if (isset($_SESSION['SESS_USERNAME']))
+			{
+			?>
+			<ul>
+				<li><img src="../../img/icons/tool_manager_icon.png" width="28px" style="margin-right: 3px;"><a class="loggedin_nav" href="http://localhost:8888/webapp/appmanager.php">App Manager</a></li>
+				<li><img src="../../img/icons/settings_icon.png" width="28px"><a href="http://localhost:8888/webapp/settings.php">Settings</a></li>
+				<li><img src="../../img/icons/logout_icon.png" width="28px"><a href="http://localhost:8888/webapp/common/logout.php">Log-Out</a></li>
+			<ul>
+			<?php
+			}
+			?>
+      </div> <!-- drop down options -->
+  </header> <!-- top bar -->
 <noscript>This site just doesn't work, period, without JavaScript</noscript>
