@@ -19,16 +19,19 @@ function displayJournalEntries()
 {
 	$username = $_SESSION['SESS_USERNAME'];
 	$nameResult = mysql_query("SELECT * FROM Journal WHERE usersname = '$username' ORDER BY entryID DESC");
+	$num=mysql_num_rows($nameResult);
 	
 	echo "<ul class='entry'>";
 		while($info = mysql_fetch_array( $nameResult )) 
 		{
-		echo "<li>";
+		echo "<li><a href='single_post.php?id=".$num."'>";
 			echo "<span class='entry_count'>".$num."</span>";
  			echo "<h3 class='entry_title'>".$info['entry_title']."</h3>";
+			echo "<img src='imgs/trash.png' class='delete_post' />";
 			echo "<p class='entry_timestamp'>".$info['entry_timestamp'].'</p>';
 			echo "<p class='entry_content'>".$info['entry_content']."</p><br/>";
-		echo "</li>";
+		echo "</a></li>";
+		$num = $num -1;
 		}
 	echo "</ul>";
 }
@@ -45,6 +48,28 @@ function displaySidebar()
 			echo "<li>";
 	 		echo "<a class='entry_title_2'>".$info['entry_title']."</a><br/>";
 			echo "</li>";
+		}
+	echo "</ul>";
+}
+
+//display or sort customer table
+function displaySinglePost()
+{
+	$username = $_SESSION['SESS_USERNAME'];
+	$passed_id = $_GET['id'];
+	$nameResult = mysql_query("SELECT * FROM Journal WHERE usersname = '$username' && entryID = '$passed_id' ORDER BY entryID DESC");
+	$num=mysql_num_rows($nameResult);
+	
+	echo "<ul class='entry' id='single_post_container'>";
+		while($info = mysql_fetch_array( $nameResult )) 
+		{
+		echo "<li>";
+ 			echo "<h3 class='entry_title'>".$info['entry_title']."</h3>";
+			echo "<img src='imgs/trash.png' class='delete_post' />";
+			echo "<p class='entry_timestamp'>".$info['entry_timestamp'].'</p>';
+			echo "<p class='entry_content'>".$info['entry_content']."</p><br/>";
+		echo "</li>";
+		$num = $num -1;
 		}
 	echo "</ul>";
 }

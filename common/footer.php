@@ -139,6 +139,25 @@
 			});
 			
 			$( "#accordion" ).accordion({ header: 'h4',active: false, collapsible: true });
+			/*
+			$('.guideline_rules').click(function(e) {
+					$('.guideline_rules').siblings('.guideline_arrow').css('display', 'none');
+				});
+				*/
+				
+				$('.guideline_rules').toggle(
+				    function()
+				    {
+						$(this).find('.guideline_arrow').each(function() {
+							$(this).addClass('rotate_arrow');
+						});
+					},
+				    function()
+				    {
+						$(this).find('.guideline_arrow').each(function() {
+							$(this).removeClass('rotate_arrow');
+						}); 
+				});
 	   });
 	
 	</script>
