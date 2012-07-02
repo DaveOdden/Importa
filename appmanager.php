@@ -39,28 +39,40 @@ $(document).ready(function() {
 		<div id="available_app_container">
 			<?php
 			$users_apps_str = mysql_query("SELECT username, users_apps FROM UserAccounts WHERE username = '$username'");
+			
+			$xml_file = "data.xml";
+			$xml_parser = xml_parser_create(); 
+
+			xml_set_element_handler($xml_parser, "startTag", "endTag"); 
+			xml_set_character_data_handler($xml_parser, "contents"); 
+
+			$fp = fopen($xml_file, "r"); 
+			$xml_data = fread($fp, 80000);
+
 			while($info = mysql_fetch_array( $users_apps_str )) 
 			{
 				$users_apps_str = $info['users_apps'];
 				$explodedArray = explode('-',$users_apps_str);
 			}
+			
 			$i=0;
 			$count = 0;
 			while( $app = mysql_fetch_row( $tables ) )
 			{
 				if ("UserAccounts" != $app[0] && "UserSessions" != $app[0])
 				{
-					echo '<div class="avail_app_wrapper">';
-					echo '<div class="placeholder"></div>';
-					echo '<h3 class="app_title">'.$app[0].'</h3><p class="app_desc">Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec id elit.</p>';
-					if(!array_diff($app, $explodedArray))
-					{
-					echo '<a href="appmanager.php?action=deactivate&app='.$app[0].'" class="deactivate_app_text">deactivate app</a>';
-					}
-					else if(array_diff($app, $explodedArray))
-					{
-					echo '<a href="appmanager.php?app='.$app[0].'" class="activate_app_text">activate app</a>';
-					}
+					echo '<div class="each_app_wrapper">';
+						echo '<img src="../webapp/apps/'.$app[0].'/imgs/app_img.jpg" class="app_graphic placeholder"/>';
+						echo '<h3 class="app_title">'.$app[0].'</h3><p class="app_desc">'.$xml_data.'</p>';
+					
+						if(!array_diff($app, $explodedArray))
+						{
+							echo '<a href="appmanager.php?action=deactivate&app='.$app[0].'" class="deactivate_app_text">deactivate app</a>';
+						}
+						else if(array_diff($app, $explodedArray))
+						{
+							echo '<a href="appmanager.php?app='.$app[0].'" class="activate_app_text">activate app</a>';
+						}
 					echo '</div>';
 				//echo '<hr class="app_hr"/>'; 
 				$count++;

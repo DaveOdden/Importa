@@ -33,7 +33,5 @@ if (isset($_POST['submit_entry']))
 	}
 ?>
 <?php require ("../../common/app_nav.php"); ?>
-<h3 id="app_name"><a href="http://localhost:8888/webapp/apps/Journal/Journal.php">Journal</a> > [Title]</h3>
-<hr id="hr_adj"/>
 	<?php displaySinglePost(); ?>
 <?php include_once ("../../common/footer.php"); ?>

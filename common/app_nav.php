@@ -45,7 +45,7 @@
 			<p id="upload_app_msg">
 			Don’t see an app in the Tool Shed or feeling confident and want to build your own? Upload your own app!
 			<br/>
-			Head over to the <a href="http://localhost:8888/webapp/guidlines.php">Tool Guidlines &amp; Documentation</a> to learn how.	
+			Head over to the <a href="http://localhost:8888/webapp/guidelines.php">Tool Guidlines &amp; Documentation</a> to learn how.	
 			</p>
 			<form enctype="multipart/form-data" action="appmanager.php" method="POST">
 				<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />

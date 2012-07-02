@@ -610,14 +610,6 @@ td { vertical-align: top; }
 	-webkit-box-shadow: 0 1px 0 0 rgba(227,240,229,1) inset, 0 1px 0 rgba(0,0,0,.5);
 }
 
-#img_placeholder {
-	position: relative;
-	float: left;
-	margin-left: 5%;
-	width: 46%;
-	height: 290px;
-	background-color: grey;
-}
 
 /*----------------------------------------------
 			HOME PAGE STYLES - Section 2
@@ -1032,23 +1024,35 @@ ul.app_nav  li a:last-child {
 #app_wrapper { padding-left: 0; }
 #app_manager_container { margin-bottom: 40px; }
 #available_app_container { height: 100%; }
-#available_app_container h3 { margin-top: -10px; margin-left: 30px; font-size: 26px; }
+
+.app_graphic {
+	position: relative;
+	float: left;
+	width: 220px;
+	height: 150px;
+}
 
 /* Icon View - Default Styles */
-.avail_app_wrapper {float:left; }
-.avail_app_wrapper:last-child {margin-bottom: 60px;}
-.placeholder {margin-left: 40px; margin-top: 25px; width: 200px; height: 140px; background-color: #e7e7e7;}
-.app_desc { margin:0px; padding:0px; margin-left:50px; margin-bottom:4px; width: 240px; text-align:left; font-size: 14px;line-height: 1em;}
+.each_app_wrapper {float:left; padding: 10px 0px 14px 10px; margin: 20px 10px 0 10px; margin-left: 40px; border-radius: 4px; }
+.each_app_wrapper:hover { background-color: white; box-shadow: 0 1px 2px #999; }
+.each_app_wrapper:last-child {margin-bottom: 60px;}
 
-.activate_app_text {margin-left: 50px;margin-top: 4px; font-size: 15px;}
-.deactivate_app_text {margin-left: 50px; color: #797f87; text-decoration: none;font-style:italic; font-size: 15px;}
+.placeholder {width: 220px; height: 150px; background-color: #ffffff; padding: 10px; margin: 0 0 7px 0; box-shadow: 0 1px 2px #999; border-radius: 4px; }
+.each_app_wrapper:hover > .placeholder { box-shadow: 0 0 0 #ffffff; background-color: #ffffff; height: 160px; width: 230px; padding: 5px;}
+.app_title { margin: 10px 0 4px -10px; font-size: 26px; }
+.app_desc { margin:0 0 3px 10px; padding:0px; width: 240px; text-align:left; font-size: 14px; line-height: 1.4em;}
+
+.activate_app_text {margin-top: 4px; font-size: 15px; margin: 0 0 0 8px}
+.deactivate_app_text {color: #797f87; text-decoration: none; font-style:italic; font-size: 15px; margin: 0 0 0 8px}
 a.deactivate_app_text {color: #797f87;}
 a:hover.deactivate_app_text {text-decoration: underline;}
 
 /* List View - jQuery AddClass Styles */
-.placeholder_list { float:left; margin-right: 10px; }
-.app_title_list {  width: inherit; margin-top: 17px; padding: 0; }
-.app_desc_list { width: inherit; margin-top: 0px; padding: 0; }
+#app_manager_list_view_btn { cursor: pointer; cursor: hand; padding: 7px 14px 8px 14px; border: 1px solid #aeaeae; border-radius: 4px; background-color: #f0f0f0 ; box-shadow: 0px 1px 0px 0px #ffffff inset; }
+#app_manager_icon_view_btn { cursor: pointer; cursor: hand; padding: 7px 10px 8px 14px; border: 1px solid #aeaeae; border-radius: 4px; background-color: #f0f0f0 ; box-shadow: 0px 1px 0px 0px #ffffff inset; }
+.placeholder_list { float:left; margin: 20px 10px 0 0; padding: 4px;}
+.app_title_list {  width: inherit; margin-top: -20px !important; padding: 0; }
+.app_desc_list { width: inherit; margin-top: 0; padding: 0; }
 
 .activate_app_text_list { margin-left: 0; width: inherit;}
 .deactivate_app_text_list { margin-left: 0;}
@@ -1117,7 +1121,7 @@ a:hover.deactivate_app_text {text-decoration: underline;}
 
 #topic_list {
 	margin: 0;
-	padding-left: 0;
+	padding-left: 12px;
 }
 
 #topic_list h5 {
@@ -1137,7 +1141,7 @@ a:hover.deactivate_app_text {text-decoration: underline;}
 
 .each_topic {
 	position: relative;
-	left: 12px;
+	left: 0;
 	margin: 0;
 	padding: 10px;
 	border-top: 1px solid #b0b0b0;
@@ -1176,6 +1180,23 @@ a:hover.deactivate_app_text {text-decoration: underline;}
 	padding: 0;
 	top: 19px;
 	right: 10px;
+}
+
+#guidleline_search_form {
+	float: right;
+	margin: -34px 63px 0 0;
+	border-radius: 100px;
+}
+
+#guidleline_search_form input {
+	color: #999999;
+	height: 30px;
+	width: 200px;
+	background-color: #f7f7f7;
+	border-radius: 499px;
+	padding: 0 0 0 10px;
+	border: 1px solid #cdcdcd;
+	-webkit-box-shadow: 0px 1px 0px rgba(255,255,255, 1);
 }
 
 

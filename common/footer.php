@@ -120,7 +120,7 @@
 			
 			$('#app_manager_list_view_btn').click(function() {
 				//$("#dropdown_options").fadeOut(200).delay(1800);
-				$('.placeholder').css({width: '75', height: '75'});
+				$('.placeholder').css({width: '73', height: '50'});
 				$('.placeholder').addClass('placeholder_list');
 				$('.app_title').css({'width': 'inherit', 'margin-top': '17px', 'padding':'0'});
 				$('.app_desc').addClass('app_desc_list');
@@ -130,15 +130,15 @@
 			
 			$('#app_manager_icon_view_btn').click(function() {
 				//$("#dropdown_options").fadeOut(200).delay(1800);
-				$('.placeholder').css({width: '200', height: '140'});
+				$('.placeholder').css({width: '220', height: '150'});
 				$('.placeholder').removeClass('placeholder_list');
-				$('.app_title').css({'margin-top': '0px', 'padding':'0'});
+				$('.app_title').css({'margin': '10px 0 4px -10px', 'padding':'0'});
 				$('.app_desc').removeClass('app_desc_list');
 				$('.activate_app_text').removeClass('activate_app_text_list');
 				$('.deactivate_app_text').removeClass('deactivate_app_text_list');
 			});
 			
-			$( "#accordion" ).accordion({ header: 'h4',active: false, collapsible: true });
+			$( "#accordion" ).accordion({ header: 'h4',active: false, collapsible: true, autoHeight: false });
 			/*
 			$('.guideline_rules').click(function(e) {
 					$('.guideline_rules').siblings('.guideline_arrow').css('display', 'none');
